@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { routerUser } = require('./routes/routerUser');
-const connectToDatabase = require('./database-config/dbConfig');
+const { routerUser } = require("./routes/routerUser");
+const connectToDatabase = require("./database-config/dbConfig");
 
 const app = express();
 const port = 3000;
@@ -26,4 +26,4 @@ async function startServer() {
   }
 }
 
-startServer()
+startServer();
