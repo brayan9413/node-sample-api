@@ -4,7 +4,7 @@ const { routerUser } = require("./routes/routerUser");
 const connectToDatabase = require("./database-config/dbConfig");
 
 const app = express();
-const port = 3000;
+const port = 80;
 
 app.use(bodyParser.json());
 

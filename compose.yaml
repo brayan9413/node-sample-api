@@ -1,0 +1,10 @@
+# https://docs.docker.com/compose/compose-file/
+services:
+  server:
+    build:
+      context: .
+    environment:
+      NODE_ENV: production
+      MONGO_URI: $MONGO_URI
+    ports:
+      - 80:80
