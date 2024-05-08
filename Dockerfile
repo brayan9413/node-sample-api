@@ -26,7 +26,7 @@ USER node
 COPY . .
 
 # Expose the port that the application listens on.
-EXPOSE 80
+EXPOSE 3000
 
 # Run the application.
 CMD npm run start-prod
