@@ -8,13 +8,15 @@
     "start-dev": "nodemon app.js",
     "lint": "eslint .",
     "prettier": "npx prettier . --check",
+    "prettier-fix": "npx prettier . --write",
     "start-prod": "node app.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.3.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",

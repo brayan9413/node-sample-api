@@ -8,3 +8,4 @@ coverage
 # General
 README.md
 eslint.config.mjs
+package-lock.json
