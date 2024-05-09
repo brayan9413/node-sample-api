@@ -9,3 +9,6 @@ coverage
 README.md
 eslint.config.mjs
 package-lock.json
+
+# Helm
+helm/*
