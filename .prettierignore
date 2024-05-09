@@ -1,0 +1,14 @@
+# Ignore artifacts:
+build
+coverage
+
+# Ignore all HTML files:
+**/*.html
+
+# General
+README.md
+eslint.config.mjs
+package-lock.json
+
+# Helm
+helm/*
