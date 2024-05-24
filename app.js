@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const { routerUser } = require("./routes/routerUser");
 const connectToDatabase = require("./database-config/dbConfig");
+const logger = require("./logger/logger.js");
 
 const app = express();
 const port = 3000;
@@ -9,6 +10,7 @@ const port = 3000;
 app.use(bodyParser.json());
 
 app.get("/health-check", (req, res) => {
+  logger.info("Health check OK");
   res.status(200).send("OK");
 });
 
@@ -19,9 +21,10 @@ async function startServer() {
     await connectToDatabase();
 
     app.listen(port, () => {
-      console.log(`App running on port: ${port}`);
+      logger.info(`App running on port: ${port}`);
     });
   } catch (err) {
+    logger.error(err)
     process.exit(1); // Exit the process if unable to connect to MongoDB
   }
 }

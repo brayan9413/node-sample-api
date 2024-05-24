@@ -70,7 +70,7 @@ export MONGO_URI=mongodb://localhost:27017/test_br_api
 
 4. Start the server (dev mode)
 ```bash
-npm start-dev
+npm run start-dev
 ```
 
 **start WITH DOCKER**
