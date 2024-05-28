@@ -24,7 +24,7 @@ async function startServer() {
       logger.info(`App running on port: ${port}`);
     });
   } catch (err) {
-    logger.error(err)
+    logger.error(err);
     process.exit(1); // Exit the process if unable to connect to MongoDB
   }
 }

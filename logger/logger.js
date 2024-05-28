@@ -1,12 +1,12 @@
-const winston = require('winston');
+const winston = require("winston");
 
 const logger = winston.createLogger({
-  level: 'info',
+  level: "info",
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.json()
+    winston.format.json(),
   ),
-  defaultMeta: { service: 'node-sample-api' },
+  defaultMeta: { service: "node-sample-api" },
   transports: [
     //
     // - Write all logs with importance level of `error` or less to `error.log`

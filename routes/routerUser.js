@@ -11,7 +11,6 @@ routerUser.get("/users", async (req, res) => {
     const users = await user.find({});
     logger.info("Success - get users", users);
     res.json(users);
-
   } catch (error) {
     logger.error("Error getting users", error);
     res.status(500).json({ error: "Server error" });
@@ -29,7 +28,7 @@ routerUser.post("/register", async (req, res) => {
     });
 
     await newUser.save();
-    logger.info("new user created", { firstName, lastName, birthDate })
+    logger.info("new user created", { firstName, lastName, birthDate });
     res.json({ message: "User created successfully" });
   } catch (error) {
     logger.error("An error occurred while creating the user", error);
