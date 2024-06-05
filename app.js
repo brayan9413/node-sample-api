@@ -1,7 +1,10 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { routerUser } = require("./routes/routerUser");
-const { startMetricsServer, restResponseTimeHistogram } = require("./metrics/metrics.js");
+const {
+  startMetricsServer,
+  restResponseTimeHistogram,
+} = require("./metrics/metrics.js");
 const connectToDatabase = require("./database-config/dbConfig");
 const logger = require("./logger/logger.js");
 const responseTime = require("response-time");
@@ -21,10 +24,10 @@ app.use(
           route: req.route.path,
           status_code: res.statusCode,
         },
-        time * 1000
+        time * 1000,
       );
     }
-  })
+  }),
 );
 
 app.get("/health-check", (req, res) => {

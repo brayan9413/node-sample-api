@@ -8,9 +8,10 @@ const routerUser = express.Router();
 
 // Get users
 routerUser.get("/users", async (req, res) => {
-  metricsOperation = 'GET_USERS';
+  metricsOperation = "GET_USERS";
+  const timer = databaseResponseTimeHistogram.startTimer();
+
   try {
-    const timer = databaseResponseTimeHistogram.startTimer()
     const users = await user.find({});
 
     timer({ operation: metricsOperation, success: true });
@@ -25,7 +26,9 @@ routerUser.get("/users", async (req, res) => {
 
 // Create user
 routerUser.post("/register", async (req, res) => {
-  metricsOperation = 'REGISTER_USER';
+  metricsOperation = "REGISTER_USER";
+  const timer = databaseResponseTimeHistogram.startTimer();
+
   try {
     const { firstName, lastName, birthDate } = req.body;
     const newUser = new user({
@@ -34,7 +37,6 @@ routerUser.post("/register", async (req, res) => {
       birthDate,
     });
 
-    const timer = databaseResponseTimeHistogram.startTimer()
     await newUser.save();
 
     timer({ operation: metricsOperation, success: true });

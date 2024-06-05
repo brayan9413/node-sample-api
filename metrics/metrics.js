@@ -20,7 +20,7 @@ const databaseResponseTimeHistogram = new client.Histogram({
 
 // Metrics server
 function startMetricsServer() {
-  const collectDefaultMetrics = client.collectDefaultMetrics
+  const collectDefaultMetrics = client.collectDefaultMetrics;
 
   collectDefaultMetrics();
 
@@ -28,7 +28,7 @@ function startMetricsServer() {
     res.set("Content-type", client.register.contentType);
 
     return res.send(await client.register.metrics());
-  })
+  });
 
   app.listen(port, () => {
     logger.info(`Metrics server running on port: ${port}`);
@@ -38,5 +38,5 @@ function startMetricsServer() {
 module.exports = {
   startMetricsServer,
   restResponseTimeHistogram,
-  databaseResponseTimeHistogram
+  databaseResponseTimeHistogram,
 };
