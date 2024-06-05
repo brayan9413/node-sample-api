@@ -5,6 +5,20 @@ const logger = require("../logger/logger.js");
 const app = express();
 const port = 9100;
 
+// Histograms
+const restResponseTimeHistogram = new client.Histogram({
+  name: "rest_response_time_duration_seconds",
+  help: "REST API response time in seconds",
+  labelNames: ["method", "route", "status_code"],
+});
+
+const databaseResponseTimeHistogram = new client.Histogram({
+  name: "db_response_time_duration_seconds",
+  help: "Database response time in seconds",
+  labelNames: ["operation", "success"],
+});
+
+// Metrics server
 function startMetricsServer() {
   const collectDefaultMetrics = client.collectDefaultMetrics
 
@@ -21,4 +35,8 @@ function startMetricsServer() {
   });
 }
 
-module.exports = { startMetricsServer };
+module.exports = {
+  startMetricsServer,
+  restResponseTimeHistogram,
+  databaseResponseTimeHistogram
+};
