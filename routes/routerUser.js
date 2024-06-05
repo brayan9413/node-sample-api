@@ -8,7 +8,7 @@ const routerUser = express.Router();
 
 // Get users
 routerUser.get("/users", async (req, res) => {
-  metricsOperation = "GET_USERS";
+  const metricsOperation = "GET_USERS";
   const timer = databaseResponseTimeHistogram.startTimer();
 
   try {
@@ -26,7 +26,7 @@ routerUser.get("/users", async (req, res) => {
 
 // Create user
 routerUser.post("/register", async (req, res) => {
-  metricsOperation = "REGISTER_USER";
+  const metricsOperation = "REGISTER_USER";
   const timer = databaseResponseTimeHistogram.startTimer();
 
   try {
