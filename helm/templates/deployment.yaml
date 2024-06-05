@@ -43,6 +43,11 @@ spec:
             - name: http # port name to use in the service target port: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+            ## Additional for metrics
+            - name: metrics
+              containerPort: {{ .Values.service.metricsPort }}
+              protocol: TCP
+            ## Additional for metrics
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:

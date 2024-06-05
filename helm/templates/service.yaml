@@ -11,5 +11,11 @@ spec:
       targetPort: http # port name on the deployment: http
       protocol: TCP
       name: http
+    ## Additional for metrics
+    - port: {{ .Values.service.metricsPort }}
+      targetPort: metrics # port name on the deployment: metrics
+      protocol: TCP
+      name: metrics
+    ## Additional for metrics
   selector:
     {{- include "node-sample-api.selectorLabels" . | nindent 4 }}

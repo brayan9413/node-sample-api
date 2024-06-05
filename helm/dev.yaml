@@ -11,6 +11,7 @@ image:
   tag: ""
 
 imagePullSecrets: []
+# imagePullSecrets: [{name: regcredaws}] # local minikube
 nameOverride: ""
 fullnameOverride: ""
 
@@ -42,6 +43,9 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 3000
+  ## Additional for metrics
+  metricsPort: 9100
+  ## Additional for metrics
 
 ingress:
   enabled: true
