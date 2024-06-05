@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const { routerUser } = require("./routes/routerUser");
+const { startMetricsServer } = require("./metrics/metrics.js");
 const connectToDatabase = require("./database-config/dbConfig");
 const logger = require("./logger/logger.js");
 
@@ -22,6 +23,8 @@ async function startServer() {
 
     app.listen(port, () => {
       logger.info(`App running on port: ${port}`);
+
+      startMetricsServer(); // metrics server
     });
   } catch (err) {
     logger.error(err);
