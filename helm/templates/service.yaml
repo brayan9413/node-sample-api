@@ -4,6 +4,12 @@ metadata:
   name: {{ include "node-sample-api.fullname" . }}
   labels:
     {{- include "node-sample-api.labels" . | nindent 4 }}
+  ## Additional for metrics
+  {{- with .Values.service.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  ## Additional for metrics
 spec:
   type: {{ .Values.service.type }}
   ports:
