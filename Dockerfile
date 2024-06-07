@@ -25,8 +25,8 @@ USER node
 # Copy the rest of the source files into the image.
 COPY . .
 
-# Expose the port that the application listens on.
-EXPOSE 3000
+# Expose the ports that the application listens on. 9100 metrics port
+EXPOSE 3000 9100
 
 # Run the application.
 CMD npm run start-prod

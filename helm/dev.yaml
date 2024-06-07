@@ -11,6 +11,7 @@ image:
   tag: ""
 
 imagePullSecrets: []
+# imagePullSecrets: [{name: regcredaws}] # local minikube
 nameOverride: ""
 fullnameOverride: ""
 
@@ -42,6 +43,14 @@ securityContext: {}
 service:
   type: ClusterIP
   port: 3000
+  ## Additional for metrics
+  metricsPort: 9100
+  annotations:
+    k8s.grafana.com/scrape: 'true'
+    k8s.grafana.com/metrics_path: '/metrics'
+    k8s.grafana.com/metrics_portNumber: '9100'
+    k8s.grafana.com/metrics_scheme: 'http'
+  ## Additional for metrics
 
 ingress:
   enabled: true
