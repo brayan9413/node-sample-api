@@ -5,6 +5,18 @@
 This project is an API developed using Node.js, Express, MongoDB and Mongoose to establish the connection with the database persisten storage.
 Also Provides a set of endpoints to interact with the MongoDB database.
 
+## Logs and Metrics
+
+`logger/logger.js`
+
+The project includes a log formatter (Winston) for Loki or ELK logs scraping with preconfigured labels, it will send the logs to the stout.
+
+`metrics/metrics.js`
+
+It also includes a metrics server exposed in port 9100 http://localhost:9100 for metrics scraping with Prometheus
+
+Registering metrics like API and DB response times and default node process metrics, by integrating these metrics with Prometheus and Grafana We can create visualization dashboards and improve the observability of the project.
+
 ## Project structure
 
 ```
@@ -25,6 +37,10 @@ Also Provides a set of endpoints to interact with the MongoDB database.
 │       ├── service.yaml
 │       ├── serviceaccount.yaml
 │       └── tests
+├── logger
+│   └── logger.js
+├── metrics
+│   └── metrics.js
 ├── routes
 │   └── routerUser.js
 └── scripts
