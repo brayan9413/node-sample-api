@@ -44,35 +44,35 @@ service:
   type: ClusterIP
   port: 3000
   ## Additional for metrics
-  metricsPort: 9100
-  annotations:
-    k8s.grafana.com/scrape: 'true'
-    k8s.grafana.com/metrics_path: '/metrics'
-    k8s.grafana.com/metrics_portNumber: '9100'
-    k8s.grafana.com/metrics_scheme: 'http'
+  # metricsPort: 9100
+  # annotations:
+  #   k8s.grafana.com/scrape: 'true'
+  #   k8s.grafana.com/metrics_path: '/metrics'
+  #   k8s.grafana.com/metrics_portNumber: '9100'
+  #   k8s.grafana.com/metrics_scheme: 'http'
   ## Additional for metrics
 
-ingress:
-  enabled: true
-  className: "alb"
-  annotations:
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip # Register K8s pods IP
-    alb.ingress.kubernetes.io/healthcheck-path: /health-check
-    # SSL config
-    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
-    alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm:us-east-1:533267176850:certificate/f0f7aaf9-1d7e-42d0-964d-dc228f576541'
-    # alb.ingress.kubernetes.io/ssl-redirect: '443'
-    # LB group config
-    alb.ingress.kubernetes.io/group.name: public-eks-services-dev # specifies the group name that this Ingress belongs to. for multiple services
-    alb.ingress.kubernetes.io/tags: Name=public-eks-services-dev,Environment=dev
-    alb.ingress.kubernetes.io/load-balancer-attributes: deletion_protection.enabled=true
-  hosts:
-    - host: node-sample-api.brayansalazar.com
-      paths:
-        - path: /
-          pathType: Prefix
-  tls: []
+# ingress:
+#   enabled: true
+#   className: "alb"
+#   annotations:
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip # Register K8s pods IP
+#     alb.ingress.kubernetes.io/healthcheck-path: /health-check
+#     # SSL config
+#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}, {"HTTP":80}]'
+#     alb.ingress.kubernetes.io/certificate-arn: 'arn:aws:acm:us-east-1:533267176850:certificate/f0f7aaf9-1d7e-42d0-964d-dc228f576541'
+#     # alb.ingress.kubernetes.io/ssl-redirect: '443'
+#     # LB group config
+#     alb.ingress.kubernetes.io/group.name: public-eks-services-dev # specifies the group name that this Ingress belongs to. for multiple services
+#     alb.ingress.kubernetes.io/tags: Name=public-eks-services-dev,Environment=dev
+#     alb.ingress.kubernetes.io/load-balancer-attributes: deletion_protection.enabled=true
+#   hosts:
+#     - host: node-sample-api.brayansalazar.com
+#       paths:
+#         - path: /
+#           pathType: Prefix
+#   tls: []
 
 resources:
   limits:
