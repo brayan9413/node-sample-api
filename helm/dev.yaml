@@ -42,7 +42,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 3000
+  port: 80
   ## Additional for metrics
   # metricsPort: 9100
   # annotations:
@@ -92,12 +92,12 @@ resources:
 #     port: http
 livenessProbe:
   httpGet:
-    path: /health-check
+    path: /
     port: http
   timeoutSeconds: 2
 readinessProbe:
   httpGet:
-    path: /health-check
+    path: /
     port: http
   timeoutSeconds: 2
   initialDelaySeconds: 5 # avoid readiness problems at the start
