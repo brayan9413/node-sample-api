@@ -52,7 +52,7 @@ service:
   #   k8s.grafana.com/metrics_scheme: 'http'
   ## Additional for metrics
 
-ingress: {}
+# ingress: {}
   # enabled: true
   # className: "alb"
   # annotations:
