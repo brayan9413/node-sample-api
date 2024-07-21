@@ -3,14 +3,16 @@ kind: Deployment
 metadata:
   name: {{ include "node-sample-api.fullname" . }}-v2
   labels:
-    {{- include "node-sample-api.labels" . | nindent 4 }}-v2
+    {{- include "node-sample-api.labels" . | nindent 4 }}
+    app.kubernetes.io/version: v2
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "node-sample-api.selectorLabels" . | nindent 6 }}-v2
+      {{- include "node-sample-api.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/version: v2
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -19,7 +21,8 @@ spec:
       {{- end }}
       labels:
         {{- include "node-sample-api.labels" . | nindent 8 }}
-        {{- with .Values.podLabels }}-v2
+        app.kubernetes.io/version: v2
+        {{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
     spec:
