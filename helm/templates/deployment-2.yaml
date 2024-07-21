@@ -67,7 +67,7 @@ spec:
           ports:
           - containerPort: 6379
         - name: test-additional-image
-          image: 533267176850.dkr.ecr.us-east-1.amazonaws.com/node-sample-api:dev-nginx-latest
+          image: 533267176850.dkr.ecr.us-east-1.amazonaws.com/sample-api-nginx:dev-nginx-latest
           ports:
           - containerPort: 8080
         # test additional image
