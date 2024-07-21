@@ -61,6 +61,12 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
+        # test additional image  
+        - name: redis
+          image: redis:latest
+          ports:
+          - containerPort: 6379
+        # test additional image
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
